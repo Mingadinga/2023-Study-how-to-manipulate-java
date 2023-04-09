@@ -1,8 +1,12 @@
 package org.example;
 
+import java.lang.annotation.Target;
+
+@MyAnnotation(name = "hwi")
 public class Book {
     private String name;
 
+    @MyAnnotation
     private static String B;
 
     private static final String C = "Book";
@@ -23,6 +27,7 @@ public class Book {
         System.out.println("F");
     }
 
+    @MyAnnotation
     public void g() {
         System.out.println("g");
     }

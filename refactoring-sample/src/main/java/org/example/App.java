@@ -105,5 +105,33 @@ public class App
             System.out.println(e.getParameterTypes());
         });
 
+        System.out.println("______");
+
+        // 애노테이션
+        // retention runtime이므로 메모리에 올라온다
+        // 리플렉션으로 조회가 가능하다
+        Arrays.stream(Book.class.getAnnotations()).forEach(System.out::println);
+
+        // getAnnotations : 상속받은 부모 클래스의 애노테이션까지 조회
+        Arrays.stream(MyBook.class.getAnnotations()).forEach(System.out::println);
+        // getDeclaredAnnotations : 자신에게 붙어있는 애노테이션만 조회
+        Arrays.stream(MyBook.class.getDeclaredAnnotations()).forEach(System.out::println);
+
+        // 필드에 붙은 애노테이션 조회
+        Arrays.stream(Book.class.getDeclaredFields()).forEach(f ->
+                Arrays.stream(f.getAnnotations()).forEach(System.out::println));
+        /*
+        @org.example.MyAnnotation(name="min", number=100)
+         */
+
+        // 애노테이션의 값 참조하기
+        Arrays.stream(Book.class.getDeclaredFields()).forEach(f ->
+                Arrays.stream(f.getAnnotations()).forEach(a -> {
+                    MyAnnotation myAnnotation = (MyAnnotation) a;
+                    System.out.println(myAnnotation.name());
+                    System.out.println(myAnnotation.number());
+                }));
+
+
     }
 }
