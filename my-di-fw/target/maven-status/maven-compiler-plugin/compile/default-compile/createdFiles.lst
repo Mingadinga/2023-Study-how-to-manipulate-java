@@ -1,0 +1,4 @@
+org/example/di/ContainerService.class
+org/example/di/BookService.class
+org/example/di/BookRepository.class
+org/example/di/Inject.class
